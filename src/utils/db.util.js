@@ -1,18 +1,18 @@
-const mysql = require("mysql");
-
-const options = {
-  host: process.env.HOST,
-  user: process.env.DB_USER,
-  password: process.DB_PASSWORD,
-  database: process.DB_NAME,
-  connectionLimit: 10,
-};
+const mysql = require("mysql2");
 
 let pool;
 
 const init = async () => {
-  pool = mysql.createPool(options);
+  pool = mysql.createPool({
+    host: process.env.HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME,
+    port: 3306,
+    connectionLimit: 10,
+  });
   console.log("Connected to DB!");
+  // console.log(pool);
   return true;
 };
 

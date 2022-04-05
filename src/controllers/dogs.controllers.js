@@ -1,3 +1,5 @@
+const db = require("../utils/db.util");
+
 // Define Dog Breeds array
 const dogs = [
   { id: "1", name: "Happy", breed: "Golden Retriever" },
@@ -6,7 +8,21 @@ const dogs = [
 ];
 
 const retrieve = (req, res) => {
-  res.status(200).send(dogs);
+  pool = db.getPool();
+
+  let sql = "SELECT * FROM dogs";
+  // Get dogs from database
+  pool.getConnection((err, connection) => {
+    if (err) throw err;
+    connection.query(sql, (err, result) => {
+      if (err) {
+        console.log(err);
+        res.sendStatus(500);
+      } else {
+        res.status(200).send(result);
+      }
+    });
+  });
 };
 
 const retrieveByName = (req, res) => {
