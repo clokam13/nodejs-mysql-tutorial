@@ -16,6 +16,6 @@ router.post("/dog", dogs.insert);
 router.post("/dog/:id", dogs.update);
 
 // DELETE route to delete a Dog
-router.delete("dog/:id", dogs.delete);
+router.delete("dog/:id", dogs.remove);
 
 module.exports = router;

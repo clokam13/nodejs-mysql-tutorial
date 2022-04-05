@@ -1,4 +1,6 @@
 // console.log("Subscribe to my channel - With Chanakya!");
+require("dotenv").config({ path: __dirname + "/.env" });
+const db = require("./utils/db.util");
 
 //Import modules
 const express = require("express");
@@ -12,6 +14,9 @@ const app = express();
 
 app.use(dogRoutes);
 
-app.listen(PORT, (err) => {
-  console.log(`Server is up at localhost ${PORT}`);
-});
+(async () => {
+  await db.init();
+  app.listen(PORT, (err) => {
+    console.log(`Server is up at localhost ${PORT}`);
+  });
+})();

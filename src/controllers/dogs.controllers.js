@@ -31,7 +31,7 @@ const update = (req, res) => {
   // Update a dog in the database
 };
 
-const delete = (req, res) => {
+const remove = (req, res) => {
   // Delete a dog in the database
 };
 
@@ -39,4 +39,4 @@ module.exports.retrieve = retrieve;
 module.exports.retrieveByName = retrieveByName;
 module.exports.update = update;
 module.exports.insert = insert;
-module.exports.delete = delete;
+module.exports.remove = remove;
