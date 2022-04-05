@@ -23,5 +23,20 @@ const retrieveByName = (req, res) => {
   if (notFound) res.sendStatus(404);
 };
 
+const insert = (req, res) => {
+  // Insert a dog into the database
+};
+
+const update = (req, res) => {
+  // Update a dog in the database
+};
+
+const delete = (req, res) => {
+  // Delete a dog in the database
+};
+
 module.exports.retrieve = retrieve;
 module.exports.retrieveByName = retrieveByName;
+module.exports.update = update;
+module.exports.insert = insert;
+module.exports.delete = delete;
