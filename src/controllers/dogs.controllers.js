@@ -12,31 +12,33 @@ const retrieve = (req, res) => {
 
   let sql = "SELECT * FROM dogs";
   // Get dogs from database
-  pool.getConnection((err, connection) => {
-    if (err) throw err;
-    connection.query(sql, (err, result) => {
-      if (err) {
-        console.log(err);
-        res.sendStatus(500);
-      } else {
-        res.status(200).send(result);
-      }
-    });
+  pool.query(sql, (err, result) => {
+    if (err) {
+      console.log(err);
+      res.sendStatus(500);
+    } else {
+      res.status(200).send(result);
+    }
   });
 };
 
 const retrieveByName = (req, res) => {
-  var notFound = true;
-  // Find dog breed based on name
-  dogs.forEach((dog) => {
-    if (dog.name == req.params.name) {
-      //res.status(200).send(`${req.params.name} is a ${dog.breed}`);
-      notFound = false;
-      res.status(200).send(dog);
+  pool = db.getPool();
+
+  let sql = "SELECT * FROM dogs WHERE name=?";
+
+  pool.query(sql, [req.params.name], (err, result) => {
+    if (err) {
+      console.log(err);
+      res.sendStatus(500);
+    } else {
+      if (result.length == 0) {
+        res.sendStatus(404);
+      } else {
+        res.status(200).send(result);
+      }
     }
   });
-
-  if (notFound) res.sendStatus(404);
 };
 
 const insert = (req, res) => {
