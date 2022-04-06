@@ -12,6 +12,8 @@ const PORT = 9900;
 // Initialize Express
 const app = express();
 
+app.use(express.json());
+
 app.use(dogRoutes);
 
 (async () => {
