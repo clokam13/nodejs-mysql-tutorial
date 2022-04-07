@@ -14,7 +14,7 @@ In this repository you will find the source for the Node JS and Express JS REST 
 
 ## Setting up this repository 
 
-You can start off by cloning this repository using `git clone`. 
+You can start off by cloning [**this repository**](https://github.com/clokam13/nodejs-api-tutorial) using `git clone`.
 
 The next step will be to create your Database and Table in MySQL. 
 

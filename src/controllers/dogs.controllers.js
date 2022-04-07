@@ -1,12 +1,5 @@
 const db = require("../utils/db.util");
 
-// Define Dog Breeds array
-const dogs = [
-  { id: "1", name: "Happy", breed: "Golden Retriever" },
-  { id: "2", name: "Silky", breed: "Labrador" },
-  { id: "3", name: "Mika", breed: "Husky" },
-];
-
 const retrieve = (req, res) => {
   pool = db.getPool();
 
